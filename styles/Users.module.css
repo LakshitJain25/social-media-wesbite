@@ -1,0 +1,29 @@
+.container{
+    display:grid;
+    grid-template-columns: repeat(12,1fr);
+    height:100%;
+}
+
+.heading{
+    color:var(--color4);
+    width:100%;
+    text-align: center;
+    font-size:2rem;
+    margin-bottom:2rem;
+}
+
+.followers{
+    margin-top:2rem;
+    grid-column: 4/10;
+    display: flex;
+    flex-direction: column;
+    margin-left:0.5rem;
+}
+
+@media (max-width: 1030px) {
+    .followers{
+        grid-column: 1/13;
+        margin-left:0.5rem;
+    }
+}
+

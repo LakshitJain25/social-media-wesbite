@@ -1,0 +1,59 @@
+.container {
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+}
+.followerContainer {
+    background-color: #ffffff;
+    height: max-content;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    box-shadow: -16px 10px 80px -9px rgb(246 145 114 / 32%);
+    margin-bottom: 2rem;
+}
+
+
+
+.followerBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.profilePic {
+    width: 4rem;
+    height: 4rem;
+    flex-grow: 1;
+    position: relative;
+    object-fit: cover;
+    border: 2px #49494948 solid;
+    border-radius: 50%;
+    margin-right:2rem;
+    cursor: pointer;
+
+}
+
+.profilePic img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.followerName{
+    font-size:2rem;
+    cursor: pointer;
+}
+
+@media (max-width: 576px) {
+    .followerName{
+        font-size:1.6rem;
+        font-weight: 500;
+        cursor: pointer;
+    }
+}

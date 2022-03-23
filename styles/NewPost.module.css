@@ -1,0 +1,255 @@
+.container {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.851);
+    z-index: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.createNewPost {
+    position: relative;
+    background: var(--color1);
+    height: 40rem;
+    width: 50%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+}
+.loader {
+    position: absolute;
+    color: var(--color6);
+    font-weight: 400;
+    left: 1rem;
+    top: 1rem;
+}
+.postHeading {
+    font-size: 2.4rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.closeBtn {
+    font-size: 2.4rem;
+    font-weight: 800;
+    cursor: pointer;
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+}
+.postForm {
+    /* background-color: var(--color2); */
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.postForm textarea {
+    font-size: 1.4rem;
+    padding: 0.6rem 2rem;
+    width: 100%;
+    height: 20%;
+    border-radius: 25px;
+    color: var(--color6);
+    resize: none;
+    border: 2px solid var(--color4);
+    background-color: var(--color1);
+}
+
+.postForm textarea:focus {
+    outline: none !important;
+    border: var(--color6) solid 3px;
+}
+
+.postForm .imageInput {
+    position: relative;
+    height: 60%;
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploadImage {
+    border-radius: 20px;
+}
+.uploadImage img {
+    border-radius: 20px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.postForm input[type="file"] {
+    /* display: none; */
+    font-size: 1.1rem;
+    color: var(--color6);
+    color: transparent;
+    background: transparent;
+}
+.customFileInput {
+    z-index: 3;
+}
+.customFileInput::-webkit-file-upload-button {
+    display: none;
+}
+
+.customFileInput::before {
+    content: "select post image";
+    margin-left: 26%;
+    padding: 0.5rem;
+    display: inline-block;
+    border-radius: 20px;
+    border: none;
+    background: var(--color4);
+    color: #ffffff;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.customFileInput:hover::before {
+    background: var(--color6);
+    color: #ffffff;
+}
+.postForm button {
+    font-size: 1.5rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 30px;
+    border: none;
+    background: var(--color4);
+    color: #ffffff;
+    transition: 0.3s ease;
+}
+.postForm button:hover {
+    background: var(--color6);
+    color: #ffffff;
+}
+
+@media (max-width: 576px) {
+    .createNewPost {
+        position: relative;
+        background: var(--color1);
+        height: 80%;
+        width: 90%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px;
+    }
+    .loader {
+        position: absolute;
+        color: var(--color6);
+        font-weight: 400;
+        left: 1rem;
+        top: 1rem;
+    }
+    .postHeading {
+        font-size: 1.7rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+    }
+    .closeBtn {
+        font-size: 2.4rem;
+        font-weight: 800;
+        cursor: pointer;
+        position: absolute;
+        right: 2rem;
+        top: 1rem;
+    }
+    .postForm {
+        /* background-color: var(--color2); */
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .postForm textarea {
+        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
+        width: 100%;
+        height: 40%;
+        margin-bottom: 1rem;
+    }
+
+    .postForm textarea:focus {
+        outline: none !important;
+        border: var(--color6) solid 3px;
+    }
+
+    .postForm .imageInput {
+        position: relative;
+        height: 60%;
+        width: 100%;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .uploadImage {
+        border-radius: 20px;
+    }
+    .uploadImage img {
+        border-radius: 20px;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .postForm input[type="file"] {
+        /* display: none; */
+        font-size: 0.8rem;
+        color: var(--color6);
+        color: transparent;
+        background: transparent;
+    }
+    .customFileInput {
+        z-index: 3;
+    }
+    .customFileInput::-webkit-file-upload-button {
+        display: none;
+    }
+
+    .customFileInput::before {
+        content: "select post image";
+        margin-left: 26%;
+        padding: 0.5rem;
+        display: inline-block;
+        border-radius: 20px;
+        border: none;
+        background: var(--color4);
+        color: #ffffff;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    .customFileInput:hover::before {
+        background: var(--color6);
+        color: #ffffff;
+    }
+    .postForm button {
+        margin-top:1rem;
+        font-size: 1rem;
+        padding: 0.7rem 1.4rem;
+        border-radius: 30px;
+        border: none;
+        background: var(--color4);
+        color: #ffffff;
+        transition: 0.3s ease;
+    }
+    .postForm button:hover {
+        background: var(--color6);
+        color: #ffffff;
+    }
+}
