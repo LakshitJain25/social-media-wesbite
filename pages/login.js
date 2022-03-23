@@ -81,7 +81,7 @@ const Login = () => {
                                 {...register('username', { required: true })}
                                 required
                                 value={username}
-                                onChange={(e) => setUsername(e.target.value)} />
+                                onChange={(e) => setUsername(e.target.value.toLowerCase())} />
                         </div>
                         <div className={styles.password}>
                             <label htmlFor="#password">Password</label>
