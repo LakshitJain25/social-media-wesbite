@@ -30,7 +30,7 @@ const Login = () => {
         if (userInfo) {
             router.push('/')
         }
-    }, [])
+    }, [router,userInfo])
 
     const onSubmit = async (data) => {
         
@@ -96,7 +96,7 @@ const Login = () => {
                         <button type='submit'>Login</button>
                     </form>
                     <div className={styles.register}>
-                        <h3>Don't have an account?</h3>
+                        <h3>Dont have an account?</h3>
                         <Link href="/register">register</Link>
                     </div>
                 </div>

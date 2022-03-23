@@ -22,7 +22,7 @@ const NewPost = ({ setShowNewPost, showNewPost, toast }) => {
         if (!userInfo) {
             router.push('/')
         }
-    }, [])
+    }, [router,userInfo])
 
     const onSubmit = async (data) => {
 

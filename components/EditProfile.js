@@ -34,7 +34,7 @@ const EditProfile = ({ setShowEditProfile, toast }) => {
         if (!userInfo) {
             router.push('/')
         }
-    }, [])
+    }, [router,userInfo])
 
 
 

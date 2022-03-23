@@ -32,7 +32,7 @@ const Register = () => {
             
             router.push('/')
         }
-    }, [])
+    }, [router,userInfo])
 
     const registerUser = async () => {
 
