@@ -24,35 +24,38 @@ const EditProfile = ({ setShowEditProfile, toast }) => {
             bio: ((userInfo && userInfo.bio) ? userInfo.bio : "")
         }
     })
+    const [currentBanner, setCurrentBanner] = useState((userInfo && userInfo.bannerImage) ? userInfo.bannerImage : defaultBanner)
+    const [currentProfileImage, setCurrentProfileImage] = useState((userInfo && userInfo.profilePic) ? userInfo.profilePic : defaultProfilePic)
     const [selectedProfileImage, setSelectedProfileImage] = useState((userInfo && userInfo.profilePic) ? userInfo.profilePic : defaultProfilePic)
     const [selectedBannerImage, setSelectedBannerImage] = useState((userInfo && userInfo.bannerImage) ? userInfo.bannerImage : defaultBanner)
     const router = useRouter()
     // const [stateBio, setStateBio] = useState((userInfo && userInfo.bio) ? userInfo.bio : "")
     useEffect(() => {
-       
+        setCurrentBanner((userInfo && userInfo.bannerImage) ? userInfo.bannerImage : defaultBanner)
+        setCurrentProfileImage((userInfo && userInfo.profilePic) ? userInfo.profilePic : defaultProfilePic)
         setUsername((userInfo && userInfo.username) ? userInfo.username : null)
         if (!userInfo) {
             router.push('/')
         }
-    }, [router,userInfo])
+    }, [router, userInfo,defaultBanner,defaultProfilePic])
 
 
 
-    const readImage = async (image, defaultImage, type, id) => {
-        
+    const readImage = async (image, currentImage, type, id) => {
+
         try {
-            if (!image || (image == defaultImage)) return defaultImage
+            if (!image || (image == currentImage)) return currentImage
             const imageRef = ref(storage, `users/${id}/${type}`)
 
             const uploadstring = await uploadString(imageRef, image, "data_url")
-            
+
             const download_url = await getDownloadURL(imageRef)
 
             return download_url
         }
         catch (e) {
-            
-            return defaultImage
+
+            return currentImage
         }
 
     }
@@ -62,30 +65,21 @@ const EditProfile = ({ setShowEditProfile, toast }) => {
 
     const onSubmit = async (data) => {
         setLoading(true)
-        
+
         const bio = data.bio
         const profileImage = selectedProfileImage
         const bannerImage = selectedBannerImage
-        const dataToSend = {
-            username: username,
-            bio,
-            profileImage,
-            bannerImage,
-            defaultBanner: userInfo.bannerImage,
-            defaultProfilePic: userInfo.profilePic
-        }
-
         try {
-           
+
             const userRef = collection(db, "users")
-           
+
             const userQuery = query(userRef, where("username", "==", username))
             const querySnapshot = await getDocs(userQuery)
-            
+
             const docId = querySnapshot.docs[0].id
-            
-            const processedProfileImage = await readImage(profileImage, defaultProfilePic, "pf", docId)
-            const processedBannerImage = await readImage(bannerImage, defaultBanner, "bn", docId)
+
+            const processedProfileImage = await readImage(profileImage, currentProfileImage, "pf", docId)
+            const processedBannerImage = await readImage(bannerImage, currentBanner, "bn", docId)
             const updatedDoc = await updateDoc(doc(db, "users", docId), {
                 profilePic: processedProfileImage,
                 bannerImage: processedBannerImage,
@@ -97,10 +91,10 @@ const EditProfile = ({ setShowEditProfile, toast }) => {
                 bio: bio
             }
 
-            
+
             const dataToSendCookie = { ...userInfo, ...returnedData }
-            
-            
+
+
             jsCookie.set('userInfo', JSON.stringify(dataToSendCookie))
             dispatch({ type: "LOGIN", payload: dataToSendCookie })
             setLoading(false)
@@ -111,7 +105,7 @@ const EditProfile = ({ setShowEditProfile, toast }) => {
             toast.error("Something went wrong!")
             setLoading(false)
             setShowEditProfile(false)
-            
+
         }
 
     }
@@ -131,7 +125,7 @@ const EditProfile = ({ setShowEditProfile, toast }) => {
                     action=""
                     className={styles.editForm}
                     style={{
-                        backgroundImage: selectedBannerImage ? `url(${selectedBannerImage})` : "none",
+                        backgroundImage: currentBanner ? `url(${currentBanner})` : "none",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         backgroundRepeat: "none"

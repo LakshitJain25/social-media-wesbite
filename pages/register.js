@@ -48,8 +48,8 @@ const Register = () => {
         }
         const docRef = await addDoc(userRef, {
             username: username.toLowerCase(),
-            profilePic:null,
-            bannerImage:null,
+            profilePic:"https://firebasestorage.googleapis.com/v0/b/social-media-app-97c1d.appspot.com/o/defaults%2Fprofile_pic.jpg?alt=media&token=3af3f83d-6cad-4b4d-8160-b2749bb41303",
+            bannerImage:"https://firebasestorage.googleapis.com/v0/b/social-media-app-97c1d.appspot.com/o/defaults%2Fbanner_image.png?alt=media&token=5d4a4548-53c3-4ec4-9951-c1b8338bd6a5",
             bio:null,
             password: bcrypt.hashSync(password),
             followers:[]
